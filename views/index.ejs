@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Website</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <h1> Welcome to the Blog Website!</h1>
+
+    <form action="/submit" method="POST">
+        <label>
+            <h3>Create a new blog post.</h3>
+        </label>
+            <p><textarea name="blogTitle" rows="1" cols="100" placeholder="Blog Title."></textarea></p>
+            <p><textarea name="blog" rows="30" cols="100" placeholder="Enter the blog content here."></textarea></p>
+            <input type="submit" value="Create">
+    </form>
+
+    <h1>Read your posted blogs.</h1>
+    <% if (locals.blogPosts) { %>
+        <% for(item in blogPosts) { %>
+        <ul>
+            <li>
+                <form action="/check" method="post">
+                    <input type="checkbox" onchange="this.form.submit()" name="content" value=<%=item%> >
+                    <p><%=item%></p>
+                </form>
+            </li> 
+        </ul>
+        <% } %>
+        <% } else { %>
+        <p>No posts yet.</p>
+    <% } %>
+
+</body>
+</html>
