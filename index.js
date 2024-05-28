@@ -22,8 +22,12 @@ app.post("/submit", (req, res) => {
     console.log(blogs);
 });
 
-app.post("/check", (req, res) => {
-    res.json(blogs[req.body.content]);
+app.get("/check/:title", async (req, res) => {
+    const title = req.params.title;
+    res.render("read.ejs", {
+        heading: title,
+        body: blogs[title]
+    });
 });
 
 app.listen(port, ()=> {

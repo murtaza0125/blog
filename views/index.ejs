@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Website</title>
-    <link href="style.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet">
 </head>
 <body>
     <h1> Welcome to the Blog Website!</h1>
@@ -23,10 +23,7 @@
         <% for(item in blogPosts) { %>
         <ul>
             <li>
-                <form action="/check" method="post">
-                    <input type="checkbox" onchange="this.form.submit()" name="content" value=<%=item%> >
-                    <p><%=item%></p>
-                </form>
+                <a class="edit" href="/check/<%=item%>" > <%= item %> </a>
             </li> 
         </ul>
         <% } %>
